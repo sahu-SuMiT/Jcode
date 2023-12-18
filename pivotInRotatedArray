@@ -1,0 +1,29 @@
+static int pivotInRotatedArray(int[] arr){
+        int start=0,end=arr.length-1;
+
+        //case for unrotated
+        if(arr[start]<arr[end]){
+            return arr.length-1;
+        }
+        //binary to find pivot in rotated array
+        while(start<=end){
+            int mid=start+(end-start)/2;
+
+            //might be a case for single element array
+            if (start==end){
+                return mid;
+            }
+            else if(arr[start]>arr[mid]){
+                end=mid-1;
+            }
+            else if(arr[mid]<arr[mid+1]){
+                start=mid+1;
+            }
+            else{
+                return mid;
+            }
+            
+        }
+        //i think we don't need this return statement, because every array will have pivot
+        return -1;
+    }
