@@ -1,0 +1,32 @@
+System.out.println("formatted %.2f",a);
+%c, %d, %e, %f, 
+
+String a = "kunal";
+String b = "Kunal";
+a==b =>true
+
+String a = new String("Kunal");
+String b = new String("Kunal");
+a==b =>false
+a.equals(b) =>true
+
+int num = 10;
+Integer a = new Integer(190); //outdated
+a.toString() works only if a is object
+
+String name = "Melissa";
+System.out.println(Arrays.toString(name.toCharArray()));
+
+STRING CONCATNATION
++ operator concats into string when one of the element is string
+String + object/primitive = String
+
+STRING BUILDER CLASS
+StirngBuilder builder = new StringBuilder();
+builder.append(anything);
+
+STRING
+name.strip(); remove white spaces
+String collection[] = name.split("");
+
+
