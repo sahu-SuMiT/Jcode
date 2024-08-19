@@ -1,0 +1,59 @@
+import java.util.Arrays;
+class HelloWorld {
+    public static void main(String[] args) {
+        int array[] = {1,5,6,8,12,14,16};
+        //build_heap(int array, boolean min_heap)
+        build_max_heap(array);
+        build_min_heap(array);
+        System.out.println(Arrays.toString(array));
+    }
+    static void min_heap(int array[], int i){
+        int l = 2*i + 1;
+        int r = 2*i + 2;
+        int smallest;
+        if(l < array.length && array[l] < array[i]){
+            smallest = l;
+        }
+        else smallest = i;
+        if(r < array.length && array[r] < array[smallest]){
+            smallest = r;
+        }
+        if(smallest != i){
+            int temp = array[i];
+            array[i] = array[smallest];
+            array[smallest] = temp;
+            min_heap(array, smallest);
+        }
+    }
+    static void max_heap(int array[], int i){
+        int l = 2*i + 1;
+        int r = 2*i + 2;
+        int largest;
+        if(l < array.length && array[l] > array[i]){
+            largest = l;
+        }
+        else largest = i;
+        if(r < array.length && array[r] > array[largest]){
+            largest = r;
+        }
+        if(largest != i){
+            int temp = array[i];
+            array[i] = array[largest];
+            array[largest] = temp;
+            max_heap(array, largest);
+        }
+    }
+    static void build_max_heap(int array[]){
+        int index = array.length/2 - 1;
+        for(int i = index; i >= 0; i--){
+            max_heap(array, i);
+        }
+    }
+    static void build_min_heap(int array[]){
+        int index = array.length/2 - 1;
+        for(int i = index; i >= 0; i--){
+            min_heap(array, i);
+        }
+    }
+    
+}
