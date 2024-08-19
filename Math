@@ -56,3 +56,10 @@ double rootN(int n){
     }
     return root;
 }
+GCD
+static int GCD(int a, int b){
+if(a == 0){
+        return b;
+}
+return gcd(b % a, a);
+}
