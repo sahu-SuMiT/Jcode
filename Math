@@ -43,3 +43,16 @@ static double sqrt(int n, int p){
             incr /= 10;
         }
         return root;
+NEWTON METHOD SQRT
+double rootN(int n){
+    double root = 0;
+    double x = n;
+    while(true){
+        root = 0.5 * (x + x/n);
+        if(Math.abs(root - x) < 1){
+            break;
+        }
+        root = x;
+    }
+    return root;
+}
