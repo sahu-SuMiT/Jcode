@@ -53,6 +53,28 @@ class Main {
         if(q.size()!=q2.size()) return false;
         return true;
     } 
+    static boolean isIdentical(TreeNode node, TreeNode subRoot){
+        if(node==null && subRoot==null)return true;
+        else if(node==null || subRoot==null || node.val != subRoot.val) return false;
+        if(!isIdentical(node.left, subRoot.left)){
+            return false;
+        }
+        if(!isIdentical(node.right,subRoot.right)){
+            return false;
+        }
+        return true;
+    }
+    static boolean isSubtree(TreeNode root, TreeNode subRoot){
+        if(root==null && subRoot==null){
+            return true;
+        }else if(root==null){
+            return true;
+        }
+        if(root.val==subRoot.val){
+            if(isIdentical(root,subRoot)) return true;
+        }
+        return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
+    }
     public static void main(String[] args) {
         TreeNode root=new TreeNode(1);
         root.left=new TreeNode(2);
@@ -67,6 +89,7 @@ class Main {
         
         boolean ans=root.isSubtree(root,subRoot);
         System.out.println(ans);
+        System.out.println("is sub Tree: "+isSubtree(root, subRoot));
         
     }
 }
