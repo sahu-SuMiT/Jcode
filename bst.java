@@ -1,4 +1,5 @@
 
+import java.util.*;
 public class Main
 {   
     static class Node{
@@ -66,14 +67,46 @@ public class Main
         while(root.left!=null) root=root.left;
         return root;
     }
+    static void printInRange(Node root, int k1, int k2){
+        if(root==null) return;
+        if(root.val<k1){
+            printInRange(root.right,k1,k2);
+        }
+        if(k2<root.val){
+            printInRange(root.left,k1,k2);
+        }
+        if(k1<=root.val && root.val<=k2){
+            printInRange(root.left,k1,k2);
+            System.out.print(root.val+" ");
+            printInRange(root.right,k1,k2);
+        }
+    }
+    static void pathToLeaf(Node root,ArrayList<Integer>list){
+        if (root == null) {
+            return;
+        }
+        if(root.left==null && root.right==null){
+            list.add(root.val);
+            for(int item:list){
+                System.out.print(item+" ");
+            }
+            System.out.println();
+            if(list.size()>0) list.remove(list.size()-1);
+            return;
+        }
+        list.add(root.val);
+        pathToLeaf(root.left,list);
+        pathToLeaf(root.right,list);
+        list.remove(list.size()-1);
+    }
     public static void main(String[] args) {
-        int values[]={5,1,3,4,2,7};
+        int values[]={8,5,3,6,10,11,14};
         Node root=null;
         for(int val : values){
             root=insert(root,val);
         }
-        root=delete(root,5);
         printTree(root,0);
-        
+        ArrayList<Integer>list=new ArrayList<>();
+        pathToLeaf(root,list);
     }
 }
