@@ -114,31 +114,30 @@ public class Main{
             root.right=delete(root.right,IS.val);
         }
     }
-    int bf=getBalanceFactor(root);
-    // System.out.println("bf of root "+root.val+" "+bf);
-    //LL case
-    if(bf>1 && key<root.left.val){
-      root=rightRotate(root);
-      return root;
+    int bf = getBalanceFactor(root);
+
+    // LL Case
+    if (bf > 1 && getBalanceFactor(root.left) >= 0) {
+        return rightRotate(root);
     }
-    //RR case
-    if(bf<-1 && key>root.right.val){
-      root=leftRotate(root);
-      return root;
+
+    // RR Case
+    if (bf < -1 && getBalanceFactor(root.right) <= 0) {
+        return leftRotate(root);
     }
-    //LR case
-    if(bf>1 && key>root.left.val){
-      root.left=leftRotate(root.left);
-      root=rightRotate(root);
-      return root;
+
+    // LR Case
+    if (bf > 1 && getBalanceFactor(root.left) < 0) {
+        root.left = leftRotate(root.left);
+        return rightRotate(root);
     }
-    //RLcase
-    if(bf<-1 && key<root.right.val){
-      root.right=rightRotate(root.right);
-      root=leftRotate(root);
-      return root;
+
+    // RL Case
+    if (bf < -1 && getBalanceFactor(root.right) > 0) {
+        root.right = rightRotate(root.right);
+        return leftRotate(root);
     }
-    
+
     return root;
   }
   static Node immediateSuccessor(Node root){
