@@ -1,4 +1,6 @@
-    public static int tabulation01(int[]val,int[]wt,int c,int[][]dp){
+//dp[i][j] is the max value using atmost i items and j weights
+
+public static int tabulation01(int[]val,int[]wt,int c,int[][]dp){
         Arrays.fill(dp[0],0);
         for(int i=0;i<dp.length;i++){
             dp[i][0]=0;
