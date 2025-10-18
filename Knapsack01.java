@@ -1,5 +1,6 @@
-//dp[i][j] is the max value using atmost i items and j weights
 
+//dp[i][j] is the max value using atmost i items and j weights
+//similar problem target sum dp[i][j], using i items, j values, can we get sum == target
 public static int tabulation01(int[]val,int[]wt,int c,int[][]dp){
         Arrays.fill(dp[0],0);
         for(int i=0;i<dp.length;i++){
