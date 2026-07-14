@@ -25,19 +25,19 @@ public class Main {
         long nextLong() { return Long.parseLong(next()); }
         double nextDouble() { return Double.parseDouble(next()); }
 
-        String[] readStringArray(int n) {
+        String[] scanStringArray(int n) {
             String[] a = new String[n];
             for (int i = 0; i < n; i++) a[i] = next();
             return a;
         }
 
-        int[] readIntArray(int n) {
+        int[] scanIntArray(int n) {
             int[] a = new int[n];
             for (int i = 0; i < n; i++) a[i] = nextInt();
             return a;
         }
 
-        long[] readLongArray(int n) {
+        long[] scanLongArray(int n) {
             long[] a = new long[n];
             for (int i = 0; i < n; i++) a[i] = nextLong();
             return a;
@@ -47,6 +47,15 @@ public class Main {
     static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
     static final double EPS = 1e-9;
     static final int MOD = (int) 1e9 + 7;
+    static final int INT_MIN=Integer.MIN_VALUE;
+    static final int INT_MAX=Integer.MAX_VALUE;
+    static final long LONG_MIN=Long.MIN_VALUE;
+    static final long LONG_MAX=Long.MAX_VALUE;
+    
+    static int mod(long x){
+        return (int)((x%MOD+MOD)%MOD);
+    }
+    
 
     static void cout(Object o) { out.print(o); }
     static void coutln(Object o) { out.println(o); }
@@ -63,15 +72,24 @@ public class Main {
         return (a / gcd(a, b)) * b;
     }
 
-    static long powmod(long a, long b, long mod) {
+    static long binExp(long a, long b){
         long res = 1;
-        a %= mod;
-        while (b > 0) {
-            if ((b & 1) == 1) res = (res * a) % mod;
-            a = (a * a) % mod;
+        while(b > 0){
+            if((b & 1) == 1) res *= a;
+            a *= a;
             b >>= 1;
         }
         return res;
+    }
+    
+    static Random rnd=new Random();
+    static void shuffle(int[] a){
+        for(int i=a.length-1;i>0;i--){
+            int j=rnd.nextInt(i+1);
+            int t=a[i];
+            a[i]=a[j];
+            a[j]=t;
+        }
     }
 
     static void solve(FastScanner sc) {
