@@ -81,16 +81,6 @@ public class Main {
         }
         return res;
     }
-    
-    static Random rnd=new Random();
-    static void shuffle(int[] a){
-        for(int i=a.length-1;i>0;i--){
-            int j=rnd.nextInt(i+1);
-            int t=a[i];
-            a[i]=a[j];
-            a[j]=t;
-        }
-    }
 
     static void solve(FastScanner sc) {
         int n = sc.nextInt();
